@@ -1,5 +1,4 @@
 
- ✅ Add API documentation section
  🔐 Advanced Authentication System (FastAPI)
 
 A production-ready authentication system built with FastAPI featuring JWT authentication, Redis-backed token revocation, email verification, password reset, background task processing using Celery, and MySQL persistence.
@@ -171,7 +170,7 @@ celery -A src.celery_task worker --loglevel=info
 uvicorn src.main:app --reload
 
 📌 API Endpoints (Example)
-POST   /auth/register
+POST   /auth/sign_up
 POST   /auth/login
 POST   /auth/logout
 GET    /auth/verify-email
@@ -202,10 +201,6 @@ Dependency injection used everywhere
 Separation of concerns (Routes → Services → DB)
 
 📈 Future Improvements
-
-OAuth2 Social Login (Google/GitHub)
-
-Rate Limiting
 
 Device-based sessions
 

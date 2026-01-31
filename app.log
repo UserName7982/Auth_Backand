@@ -3,3 +3,8 @@
 2026-01-29 15:41:31,739 - INFO - {'path': '/api/1.0.1/auth/login', 'method': 'POST'}
 2026-01-29 15:51:07,956 - INFO - {'path': '/api/1.0.1/auth/login', 'method': 'POST', 'latency': 0.0905146598815918}
 2026-01-29 15:51:26,426 - INFO - {'path': '/api/1.0.1/auth/me', 'method': 'GET', 'latency': 0.005222797393798828}
+2026-01-31 13:07:48,700 - INFO - {'path': '/', 'method': 'GET', 'latency': 0.0010099411010742188}
+2026-01-31 13:07:48,744 - INFO - {'path': '/favicon.ico', 'method': 'GET', 'latency': 0.0005185604095458984}
+2026-01-31 13:07:51,987 - INFO - {'path': '/docs', 'method': 'GET', 'latency': 0.0}
+2026-01-31 13:07:52,216 - INFO - {'path': '/openapi.json', 'method': 'GET', 'latency': 0.013748884201049805}
+2026-01-31 13:07:55,373 - INFO - {'path': '/openapi.json', 'method': 'GET', 'latency': 0.0}

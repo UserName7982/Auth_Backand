@@ -46,7 +46,7 @@ SQLModel / SQLAlchemy
 JWT (JSON Web Tokens)
 
 FastAPI-Mail
-
+```
 📁 Project Structure
 📦src
  ┣ 📂Auth
@@ -67,7 +67,7 @@ FastAPI-Mail
  ┣ 📜README.md
  ┗ 📜__init__.py
 
-
+```
 
 🔐 Authentication Flow
 Login
@@ -146,7 +146,7 @@ Prevent abuse
 Improve system stability
 
 Add Latency in http header response (checkout middleware.py file for more understanding)
-
+```
 ⚙️ Environment Variables
 
 Create a .env file:
@@ -166,7 +166,7 @@ REDIS_PORT=
 CELERY_BROKER_URL=
 CELERY_RESULT_BACKEND=
 BetterStack=(Optional)
-
+```
 🐳 Redis Using Docker
 docker run -d -p 6379:6379 redis
 
@@ -175,7 +175,7 @@ celery -A src.celery_task worker --loglevel=info
 
 ▶️ Run FastAPI Server
 uvicorn src.main:app --reload
-
+```
 📌 API Endpoints (Example)
 POST   /auth/sign_up
 POST   /auth/login
@@ -185,7 +185,7 @@ GET    /auth/verify/{token}
 POST   /auth/refresh
 POST   /auth/password_reset_request
 POST   /auth/password_reset/{token}
-
+```
 🔒 Security Practices Implemented
 
 Password hashing (bcrypt)

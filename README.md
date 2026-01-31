@@ -125,6 +125,28 @@ User submits new password with token
 
 Password updated securely
 
+⏱️ Rate Limiting
+
+This project applies rate limiting to sensitive endpoints such as:
+
+Login
+
+Register
+
+Password Reset
+
+Refresh Token
+
+Purpose:
+
+Prevent brute-force attacks
+
+Prevent abuse
+
+Improve system stability
+
+Add Latency in http header response (checkout middleware.py file for more understanding)
+
 ⚙️ Environment Variables
 
 Create a .env file:
@@ -158,10 +180,11 @@ uvicorn src.main:app --reload
 POST   /auth/sign_up
 POST   /auth/login
 POST   /auth/logout
-GET    /auth/verify-email
+POST   /auth/send_emails
+GET    /auth/verify/{token}
 POST   /auth/refresh
-POST   /auth/request-password-reset
-POST   /auth/reset-password
+POST   /auth/password_reset_request
+POST   /auth/password_reset/{token}
 
 🔒 Security Practices Implemented
 

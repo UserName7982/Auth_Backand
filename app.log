@@ -1,0 +1,5 @@
+2026-01-29 15:30:49,968 - INFO - Login Successfull
+2026-01-29 15:41:31,738 - INFO - Login Successfull
+2026-01-29 15:41:31,739 - INFO - {'path': '/api/1.0.1/auth/login', 'method': 'POST'}
+2026-01-29 15:51:07,956 - INFO - {'path': '/api/1.0.1/auth/login', 'method': 'POST', 'latency': 0.0905146598815918}
+2026-01-29 15:51:26,426 - INFO - {'path': '/api/1.0.1/auth/me', 'method': 'GET', 'latency': 0.005222797393798828}

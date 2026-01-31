@@ -1,0 +1,15 @@
+DATABASE_URL="mysql+aiomysql://root:root@localhost/DB_name"
+JWT_key=""
+Alogrithm=HS256
+MAIL_USERNAME=""
+MAIL_PASSWORD=""
+MAIL_SERVER=""
+MAIL_PORT=""
+MAIL_FROM=""
+MAIL_FROM_NAME=""
+Domain=""
+URL_REDIS=""
+REDIS_PORT=""
+CELERY_BROKER_URL=""
+CELERY_RESULT_BACKEND=""
+# BetterStack=(Optional) for logs

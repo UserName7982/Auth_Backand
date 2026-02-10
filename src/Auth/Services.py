@@ -48,6 +48,13 @@ class UserService:
             return True
         except Exception as e:
             raise HTTPException(status_code=400,detail=str(e))
+    async def get_All_Users(self):
+        statement=select(User)
+        try:
+            result=await self.session.execute(statement)
+            return result.scalars().all()
+        except Exception as e:
+            raise HTTPException(status_code=404,detail=str(e))
     
 async def getSession(session: AsyncSession=Depends(get_session))->UserService:
     return UserService(session)

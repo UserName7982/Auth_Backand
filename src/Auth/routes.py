@@ -1,5 +1,5 @@
 from src.logger import logger
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException,Query
 from fastapi.responses import JSONResponse
 from src.Mail import mail,create_message
 from src.config import configs
@@ -9,6 +9,7 @@ from src.Auth.utils import rl_callback
 from datetime import datetime, timedelta
 from src.Auth.Services import UserService, getSession
 from src.celery_task import send_email
+from urllib.parse import urlencode
 from src.Auth.Schema import (Address,
                              CreateUser, 
                             LoginUser,User, 
@@ -44,7 +45,8 @@ async def create_user(user_details:CreateUser,user_service: UserService=Depends(
         user= await user_service.Create_User(user_details)
         email=user.email
         token =create_url({"email":email,"uid":user.uid},salt="verify_email")
-        link=f"http://{configs.Domain}/api/1.0.1/auth/verify/{token}"
+        qr=urlencode({"token": token})
+        link=f"http://{configs.Domain}/api/1.0.1/auth/verify?{qr}"
         html_message=f"""<h1>verify your email
         <p>
         <a href="{link}">link</a>
@@ -55,8 +57,8 @@ async def create_user(user_details:CreateUser,user_service: UserService=Depends(
     except Exception as e:
         raise HTTPException(status_code=400,detail=str(e))
 
-@auth_router.get("/verify/{token}")
-async def verify_email(token: str, user_service: UserService = Depends(getSession)):
+@auth_router.get("/verify")
+async def verify_email(token: str=Query(...), user_service: UserService = Depends(getSession)):
     token_data = decode_url(token,salt="verify_email")
     if not token_data:
         raise HTTPException(status_code=400, detail="Invalid or expired token")
@@ -97,7 +99,15 @@ async def Login(user_details:LoginUser,user_service: UserService=Depends(getSess
 @auth_router.get("/me",dependencies=[role_che])
 async def get_user(user:User=Depends(get_current_user)):
     return user
-   
+
+@auth_router.get("/All",dependencies=[Depends(RoleChecker(["admin"]))])
+async def admin_route(user_service:UserService=Depends(getSession)):
+    try:
+        users=await user_service.get_All_Users()
+        return users
+    except Exception as e:
+        raise HTTPException(status_code=400,detail=str(e))  
+
 @auth_router.post("/logout")
 async def logout(token_data:dict=Depends(AccessTokenBearer())):
     token_id=token_data['jti']

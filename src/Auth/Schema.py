@@ -7,7 +7,7 @@ class User(BaseModel):
     last_name: str
     username: str
     email: str
-    role: str = "user"
+    role: str 
     is_verified: bool
     created_at: str
     updated_at: str
@@ -18,6 +18,7 @@ class CreateUser(BaseModel):
     username: str
     email: str
     password: str
+    role: str
 
 class LoginUser(BaseModel):
     email: str

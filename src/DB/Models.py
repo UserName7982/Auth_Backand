@@ -1,8 +1,8 @@
 from typing import List, Optional
-from sqlmodel import SQLModel, Field, Relationship
+from sqlmodel import ForeignKey, SQLModel, Field, Relationship
 from sqlalchemy import Column
 import sqlalchemy.dialects.mysql as mysql
-from datetime import datetime, date
+from datetime import datetime
 import uuid
 
 class User(SQLModel, table=True):
@@ -43,3 +43,4 @@ class User(SQLModel, table=True):
             onupdate=datetime.utcnow
         )
     )
+   

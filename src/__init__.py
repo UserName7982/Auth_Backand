@@ -15,7 +15,7 @@ async def lifespan(app: FastAPI):
     await FastAPILimiter.init(redis)
     yield
 
-app=FastAPI(version=version,description="AI Assistant",lifespan=lifespan,openapi_url=f"/{version}/openapi.json",
+app=FastAPI(version=version,description="AI Assistant",lifespan=lifespan,
     docs_url=f"/{version}/docs",
     redoc_url=f"/{version}/redoc")
 app.add_middleware(BaseHTTPMiddleware, dispatch=add_process_time_header)

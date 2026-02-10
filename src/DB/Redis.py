@@ -1,8 +1,13 @@
 from fastapi import HTTPException
 from redis.asyncio import Redis
 from src.config import configs
+import os
+redis = Redis.from_url(
+    os.getenv("URL_REDIS", configs.URL_REDIS),
+    encoding="utf-8",
+    decode_responses=True,
+)
 
-redis=Redis(host=configs.URL_REDIS,port=configs.REDIS_PORT,db=0,encoding="utf-8",decode_responses=True)
 Expiry=3600
 async def add_to_blocklist(jti:str):
     try:

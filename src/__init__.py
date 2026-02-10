@@ -21,4 +21,4 @@ app=FastAPI(version=version,description="AI Assistant",lifespan=lifespan,
 app.add_middleware(BaseHTTPMiddleware, dispatch=add_process_time_header)
 app.include_router(auth_router,prefix=f"/api/{version}",tags=["auth"])
 
-app.add_middleware(TrustedHostMiddleware, allowed_hosts=["localhost", "127.0.0.1","https://auth-backand.onrender.com"])
+app.add_middleware(TrustedHostMiddleware, allowed_hosts=["localhost", "127.0.0.1","auth-backand.onrender.com"])

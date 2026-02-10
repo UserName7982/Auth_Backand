@@ -1,4 +1,6 @@
-
+please use this to check docs and test Auth //
+https://auth-backand.onrender.com/1.0.1/docs
+https://auth-backand.onrender.com/1.0.1/redoc
  🔐 Advanced Authentication System (FastAPI)
 
 A production-ready authentication system built with FastAPI featuring JWT authentication, Redis-backed token revocation, email verification, password reset, background task processing using Celery, and MySQL persistence.

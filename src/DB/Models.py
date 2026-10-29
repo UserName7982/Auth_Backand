@@ -6,7 +6,7 @@ from datetime import datetime
 import uuid
 
 class User(SQLModel, table=True):
-    __tablename__ = "user" # type: ignore
+    __tablename__ = "users" # type: ignore
 
     uid: str = Field(
         sa_column=Column(
@@ -17,9 +17,7 @@ class User(SQLModel, table=True):
         )
     )
 
-    first_name: str
-    last_name: str
-    username: str
+    name: str
     email: str
 
     role: str = Field(
@@ -43,4 +41,7 @@ class User(SQLModel, table=True):
             onupdate=datetime.utcnow
         )
     )
-   
+
+    is_active: bool = Field(
+        sa_column=Column(mysql.BOOLEAN, default=True)
+    )

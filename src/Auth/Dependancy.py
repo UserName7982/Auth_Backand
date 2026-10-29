@@ -4,6 +4,7 @@ from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 from src.Auth.Services import UserService, getSession
 from src.Auth.utils import verify_token
 from src.DB.Redis import check_in_blocklist
+
 class TokenBearer(HTTPBearer):
     def __init__(self,auto_error:bool=True):
         super().__init__(auto_error=auto_error)

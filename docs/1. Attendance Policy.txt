@@ -1,0 +1,60 @@
+1. Attendance Policy
+Document: attendance_policy.md
+Academic Policy
+Department of Academic Affairs
+Student Attendance Policy
+1. Every student must maintain a minimum attendance of 75% in each subject to be eligible for semester-end examinations.
+2. Attendance is calculated separately for every subject, including theory and practical classes.
+3. Students with attendance between 65% and 74% may apply for attendance condonation, subject to institutional rules and approval.
+4. Students with attendance below 65% are generally not eligible for semester-end examinations unless an officially approved exception applies.
+5. Medical leave must be supported by valid medical documents submitted to the department.
+6. Attendance records are maintained by the respective subject faculty members.
+7. Students should report attendance discrepancies to their faculty within seven working days of the recorded absence.
+
+2. Examination Policy
+Document: examination_policy.md
+Examination
+Examination Rules and Regulations
+1. Students must carry a valid college identity card and examination admit card.
+2. Students should reach the examination centre at least 30 minutes before the examination begins.
+3. Mobile phones, smartwatches, programmable calculators (unless permitted), and unauthorized electronic devices are prohibited.
+4. Students are not allowed to leave the examination hall during the first 30 minutes.
+5. Any student found engaging in unfair means may face disciplinary action according to university regulations.
+6. Internal assessment may include assignments, quizzes, attendance, presentations, and class tests.
+7. Students must complete all required internal assessments to remain eligible for the final examination.
+
+3. Fee Payment Policy
+Document: fee_policy.md
+Finance
+College Fee Payment Guidelines
+1. Semester fees must be paid before the deadline announced by the administration.
+2. Students can pay fees through the official online payment portal or approved bank payment methods.
+3. Students must retain their payment receipt for future reference.
+4. Late fee charges may apply to payments made after the prescribed deadline.
+5. Students facing financial difficulties may contact the accounts department regarding available assistance.
+6. Fee refund requests must be submitted through the prescribed application process.
+7. Refund eligibility and amounts are governed by the applicable university and institutional regulations.
+
+4. Library Policy
+Document: library_policy.md
+Library
+College Library Rules
+1. Every enrolled student can access the college library using a valid identity card.
+2. Students can borrow up to three books simultaneously.
+3. The standard borrowing period is 14 days.
+4. Books must be returned or renewed before the due date.
+5. Late returns may result in fines according to library regulations.
+6. Reference books, journals, and rare collections cannot be taken outside the library.
+7. Students are responsible for damaged or lost books issued under their accounts.
+8. Silence must be maintained inside the library.
+
+5. Leave Application Policy
+Document: leave_policy.md
+Administration
+Student Leave Application Guidelines
+1. Students requiring leave must inform their respective class coordinators.
+2. Leave applications should mention the reason, duration, and supporting documents where applicable.
+3. Medical leave exceeding three consecutive days should be supported by a medical certificate.
+4. Leave approval does not automatically guarantee attendance relaxation.
+5. Students are responsible for completing assignments and academic work missed during approved leave.
+6. Applications should be submitted through the designated college procedure.

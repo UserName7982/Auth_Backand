@@ -116,7 +116,6 @@ async def logout(token_data:dict=Depends(AccessTokenBearer())):
 
 from fastapi import Depends, HTTPException
 from fastapi.responses import JSONResponse
-from datetime import datetime, timezone
 
 @auth_router.get("/refresh")
 async def refresh_access_token(token_data: dict = Depends(RefreshTokenBearer())):

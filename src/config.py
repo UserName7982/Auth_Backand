@@ -1,9 +1,12 @@
+import os
 from pydantic_settings import BaseSettings,SettingsConfigDict
 from pydantic import SecretStr
+
 class Settings(BaseSettings):
     DATABASE_URL: str
     JWT_key:str
     Alogrithm:str
+    BASE_PATH:str=os.getcwd()
     MAIL_USERNAME: str
     MAIL_PASSWORD: SecretStr
     MAIL_SERVER:str
@@ -20,6 +23,6 @@ class Settings(BaseSettings):
     CELERY_BROKER_URL: str
     CELERY_RESULT_BACKEND:str
     BetterStack: str
-    
+    Ollama_API_key:SecretStr
     model_config = SettingsConfigDict(env_file=".env")
 configs=Settings() # type: ignore

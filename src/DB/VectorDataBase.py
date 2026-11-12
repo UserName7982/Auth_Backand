@@ -1,4 +1,3 @@
-from langchain_community.vectorstores import LanceDB
 from langchain_ollama import OllamaEmbeddings
 import lancedb
 import os
@@ -12,6 +11,7 @@ lancedb_conn=lancedb.connect(uri=DB_PATH)
 embedding_function = OllamaEmbeddings(model="embeddinggemma:latest") 
 dim = len(embedding_function.embed_query("test"))
 doc_schema = pa.schema([
+    ("docs_id", pa.string()),
     ("chunk_id", pa.string()),               
     ("vector", pa.list_(pa.float32(), dim)),
     ("page_content", pa.string()),                

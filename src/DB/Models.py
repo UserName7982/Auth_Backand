@@ -1,6 +1,5 @@
-from typing import List, Optional
-from sqlmodel import ForeignKey, SQLModel, Field, Relationship
-from sqlalchemy import Column
+from sqlmodel import  SQLModel, Field
+from sqlalchemy import UUID, Column
 import sqlalchemy.dialects.mysql as mysql
 from datetime import datetime
 import uuid
@@ -45,3 +44,11 @@ class User(SQLModel, table=True):
     is_active: bool = Field(
         sa_column=Column(mysql.BOOLEAN, default=True)
     )
+
+
+class document(SQLModel, table=True):
+    __tablename__ = "documents"  # type: ignore
+
+    id: str = Field(default=UUID(), primary_key=True)
+    name: str
+    path: str = Field(default="")

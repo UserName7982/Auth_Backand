@@ -1,6 +1,5 @@
 from fastapi import FastAPI
 from src.Auth.routes import auth_router
-from src.logger import logger
 from fastapi_limiter import FastAPILimiter
 from contextlib import asynccontextmanager
 from src.DB.Redis import redis
@@ -8,7 +7,7 @@ from src.middleware import add_process_time_header
 from starlette.middleware.base import BaseHTTPMiddleware
 from fastapi.middleware.trustedhost import TrustedHostMiddleware
 from src.Retrival.api.route import retrieval
-from src.DataIngestion.api.route import ingestion
+from src.DataIngestion.api.route import admin
 from fastapi.middleware.cors import CORSMiddleware
 
 version="1.0.1"
@@ -23,7 +22,7 @@ app=FastAPI(version=version,description="AI Assistant",lifespan=lifespan,
 app.add_middleware(BaseHTTPMiddleware, dispatch=add_process_time_header)
 app.include_router(auth_router,prefix=f"/api/{version}",tags=["auth"])
 app.include_router(retrieval,prefix=f"/api/{version}",tags=["retrieval"])
-app.include_router(ingestion,prefix=f"/api/{version}",tags=["ingestion"])
+app.include_router(admin,prefix=f"/api/{version}",tags=["admin"])
 app.add_middleware(
     TrustedHostMiddleware,
     allowed_hosts=[

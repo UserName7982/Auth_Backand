@@ -62,3 +62,9 @@ async def rl_callback(request: Request, response: Response, pexpire: int):
         detail={"detail": "Rate limit exceeded", "retry_after_sec": retry_after},
         headers={"Retry-After": str(retry_after)},
     )
+
+generate_password_hash("admin")
+is_verified=verify_password_hash("admin","$argon2id$v=19$m=65536,t=3,p=4$rzXGeC+ltBbCOOd8T0mpNQ$Vh1lS1asFXat5ufVh/ieULscTVAkruRrbuhJ4pk5uGk")
+if __name__ == "__main__":
+    print(generate_password_hash("admin"))
+    print(is_verified)

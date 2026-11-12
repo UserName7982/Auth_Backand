@@ -1,6 +1,6 @@
 from sqlmodel import select
 from src.Auth.Schema import LoginUser,CreateUser
-from src.DB.Models import User
+from src.DB.Models import User, document
 from sqlalchemy.ext.asyncio import AsyncSession
 from src.Auth.utils import generate_password_hash
 from fastapi import Depends, HTTPException
@@ -48,6 +48,7 @@ class UserService:
             return True
         except Exception as e:
             raise HTTPException(status_code=400,detail=str(e))
+        
     async def get_All_Users(self):
         statement=select(User)
         try:
@@ -55,7 +56,48 @@ class UserService:
             return result.scalars().all()
         except Exception as e:
             raise HTTPException(status_code=404,detail=str(e))
-    
+
+    async def addDocs(self,docs):
+        try:
+            self.session.add(docs)
+            await self.session.commit()
+            await self.session.refresh(docs)
+            return docs
+        except Exception as e:
+            raise HTTPException(status_code=400,detail=str(e))
+        
+    async def getDocs(self):
+        statement=select(document)
+        try:
+            result=await self.session.execute(statement)
+            return result.scalars().all()
+        except Exception as e:
+            raise HTTPException(status_code=404,detail=str(e))
+
+    async def deleteDoc(self,doc_id:str):
+        statement=select(document).where(document.id==doc_id)
+        try:
+            result=await self.session.execute(statement)
+            doc=result.scalars().first()
+            if doc is None:
+                raise HTTPException(status_code=404,detail="Document not found")
+            await self.session.delete(doc)
+            await self.session.commit()
+            return doc
+        except Exception as e:
+            raise HTTPException(status_code=400,detail=str(e))
+
+    async def getDocById(self,doc_id:str):
+        statement=select(document).where(document.id==doc_id)
+        try:
+            result=await self.session.execute(statement)
+            doc=result.scalars().first()
+            if doc is None:
+                raise HTTPException(status_code=404,detail="Document not found")
+            return doc
+        except Exception as e:
+            raise HTTPException(status_code=400,detail=str(e))
+        
 async def getSession(session: AsyncSession=Depends(get_session))->UserService:
     return UserService(session)
    

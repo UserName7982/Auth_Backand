@@ -22,18 +22,19 @@ def load_text(path:str) -> Iterable[Document]:
     for d in TextLoader(path).lazy_load():
         yield d
 
-def store_in_db(chunks: List[Document]):
+def store_in_db(chunks: List[Document], docs_id: str):
     row=[]
     
     for c in chunks:
         vec=embedding_function.embed_query(c.page_content)
         row.append({
+            "docs_id": docs_id,
             "chunk_id": c.metadata.get("chunk_id"),
             "vector": [float(v) for v in vec],
             "page_content": c.page_content,
             "source": c.metadata.get("source"),
             "chunk_index": c.metadata.get("chunk_index"),
-            "chunk_hash": c.metadata.get("chunk_hash")
+            "chunk_hash": c.metadata.get("chunk_hash"),
         })
     tbl.add(row)
 
@@ -66,7 +67,7 @@ def add_to_db(Docs_Path: List[dict]):
             elif file_path.endswith(".txt"):
                 docs=load_text(file_path)
             chunks = split_and_enrich(docs)
-            store_in_db(chunks)
+            store_in_db(chunks,Path['id'])
         except Exception as e:
             raise HTTPException(status_code=500, detail=f"Error processing file {Path['path']}: {str(e)}")
 

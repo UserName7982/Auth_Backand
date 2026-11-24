@@ -2,7 +2,7 @@ from typing import List
 from ..VectorIngestion import add_to_db
 from fastapi import APIRouter, Depends, UploadFile, File
 from fastapi.responses import JSONResponse
-from .service import get_All_Documents, get_docs, upload_files, delete_doc
+from .service import get_All_Documents, get_docs, upload_files, delete_doc, reindex_vector
 from src.Auth.routes import AccessTokenBearer
 from src.Auth.Dependancy import RoleChecker
 from src.Auth.Services import UserService, getSession
@@ -32,6 +32,7 @@ async def get_all_docs(user_service: UserService = Depends(getSession)):
     documents = await get_All_Documents(user_service)
     return [docs(id=Docs.id,filename=Docs.name) for Docs in documents]
 
-# @admin.post("/reindex",dependencies=[Depends(AccessTokenBearer()), Depends(role)])
-# async def reindex():
-#     pass
+@admin.post("/reindex/{docs_id}",dependencies=[Depends(AccessTokenBearer()), Depends(role)])
+async def reindex(docs_id:str, user_service:UserService=Depends(getSession)):
+    await reindex_vector(docs_id=docs_id, user_service=user_service)
+    return JSONResponse({"message": "reindex successfull"})

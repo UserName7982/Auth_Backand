@@ -6,6 +6,7 @@ from src.config import configs
 from fastapi import HTTPException, UploadFile
 from src.DB.Models import document
 from ..api.schema import docs
+from ..VectorIngestion import delete_doc_vetor_db,add_to_db
 
 BASE_PATH = configs.BASE_PATH+"/docs"
 
@@ -62,3 +63,14 @@ async def get_docs(doc_id: str, user_service: UserService):
         return docs(id=document.id,filename=document.name)
     except Exception as e:
         raise HTTPException(status_code=500, detail={"message": "Failed to retrieve document", "error": str(e)})
+
+async def reindex_vector(docs_id:str,user_service:UserService):
+    document=await user_service.getDocById(docs_id)
+    path=document.path
+    try:
+        delete_doc_vetor_db(docs_id=docs_id)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail={"message": "Failed to deletether chunks from Vector Store", "error": str(e)})
+    docs_path:List[dict]=[]
+    docs_path.append({"filename":document.name,"path":path,"id":document.id})
+    add_to_db(docs_path)

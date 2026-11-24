@@ -1,12 +1,13 @@
 from fastapi import HTTPException
 from ..DB.VectorDataBase import tbl,embedding_function
-# from langchain_openai import ChatOpenAI
-from langchain_ollama import ChatOllama
+# from langchain_ollama import ChatOllama
+from langchain_openai import ChatOpenAI
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.prompts import PromptTemplate
+from ..config import configs
 
-# llm = ChatOpenAI(model="gemma4:31b-cloud",api_key=configs.Ollama_API_key,temperature=0.7, base_url="https://ollama.com/v1")
-llm=ChatOllama(model="llama3:8b",temperature=0.7, base_url="http://localhost:11434")
+llm = ChatOpenAI(model="nvidia/nemotron-3.5-super-vl-120b-a12b",api_key=configs.NVIDIA_NIM_API_key,temperature=0.7,base_url="https://integrate.api.nvidia.com/v1")
+# llm=ChatOllama(model="llama3:8b",temperature=0.7, base_url="http://localhost:11434")
 async def query_result(text:str,k:int=7):
     try:
         result=  tbl.search(embedding_function.embed_query(text)).limit(k).to_list()

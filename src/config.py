@@ -23,6 +23,6 @@ class Settings(BaseSettings):
     CELERY_BROKER_URL: str
     CELERY_RESULT_BACKEND:str
     BetterStack: str
-    Ollama_API_key:SecretStr
+    NVIDIA_NIM_API_key:SecretStr
     model_config = SettingsConfigDict(env_file=".env")
 configs=Settings() # type: ignore

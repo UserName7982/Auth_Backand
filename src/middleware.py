@@ -10,6 +10,7 @@ async def add_process_time_header(request:Request, call_next):
     log_dict={
         "path": request.url.path,
         "method": request.method,
+        "path":request.url.path,
         "latency": process_time
     }
     logger.info(log_dict,extra=log_dict)

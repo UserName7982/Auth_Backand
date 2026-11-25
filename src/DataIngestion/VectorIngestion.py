@@ -55,6 +55,9 @@ def split_and_enrich(docs: Iterable[Document]) -> List[Document]:
         c.metadata["chunk_id"] = f"{src}:{chunk_hash}:{i}"
     return chunks
 
+def delete_doc_vetor_db(docs_id: str):
+    tbl.delete("docs_id=docs_id")
+
 def add_to_db(Docs_Path: List[dict]):
 
     for Path in Docs_Path:
